@@ -1,0 +1,62 @@
+<div *ngIf="dataLoaded && clients && clients.length > 0">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Actif</th>       
+          <th>Date de création</th>
+          <th [hasRoles]="'admin'"></th>
+          <th [hasRoles]="'admin'"></th>
+          <th [hasRoles]="'admin'"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients">
+          <td>{{ client.id }}</td>
+          <td>{{ client.name }}</td>   
+          <td>{{ client.email }}</td>
+
+          <td *ngIf="client.active == 1">
+            <i class="fas fa-check-circle text-success"></i>
+          </td>
+
+          <td *ngIf="client.active != 1">
+            <i class="fas fa-times-circle text-danger"></i>
+          </td>    
+
+          <td>{{ client.created_at }}</td>  
+
+          <td [hasRoles]="'admin'">
+            <button type="button" class="btn bg-success text-white btn-sm" (click)="editClient(client.id)">
+                <i class="fas fa-edit"></i>
+            </button>
+          </td>
+
+          <td>
+            <button type="button" class="btn bg-danger text-white btn-sm ml-2" (click)="deleteClient(client.id)">
+              <i class="fas fa-trash-alt"></i> 
+            </button>
+          </td>
+
+          <td>
+            <button *ngIf="client.active == 1" type="button" class="btn bg-light text-white btn-sm ml-2 border-dark" (click)="deactiveClient(client.id)">
+              <i class="fas fa-check-circle text-success"></i>
+            </button>
+
+            <button *ngIf="client.active != 1" type="button" class="btn bg-light text-white btn-sm ml-2 border-dark" (click)="activeClient(client.id)">
+              <i class="fas fa-times-circle text-danger"></i>
+            </button>  
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="dataLoaded && clients && clients.length === 0">
+    <div class="alert alert-danger text-center mt-5" role="alert">
+      Il n'y a pas de clients.
+    </div>
+  </div>
+  

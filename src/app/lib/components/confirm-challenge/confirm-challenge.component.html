@@ -1,0 +1,19 @@
+<h3 class="m-0 mb-2 text-base font-semibold leading-6 {{color}}">{{title}}</h3>
+<div class="max-w-xl text-sm text-gray-500">
+  <p >{{message}}</p>
+</div>
+<div class="w-full sm:max-w-xs">
+  <label for="challenge" class="sr-only">Répondez à cette question pour confirmer</label>
+  <input type="text" name="email" id="challenge"
+    class="block w-full rounded-md border-0 px-2 py-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
+    placeholder="Combien font {{num1}}  + {{num2}}">
+</div>
+
+<div class="w-full py-3">
+  <input type="button" (click)="onClickConfirm()"
+    class="cursor-pointer inline-flex items-center justify-center w-full px-3 !ml-0 py-2 mt-3 font-semibold text-white bg-teal-600 rounded-md shadow-sm mr-2 text-sm hover:bg-teal-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 sm:ml-3 sm:mt-0 sm:w-auto"
+    value="Confirmer" />
+  <input type="button" (click)="onClickCancel()"
+    class="cursor-pointer inline-flex items-center px-3 !ml-2 py-2 mt-3  text-sm font-semibold text-gray-900 bg-white rounded-md shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+    value="Annuler" />
+</div>

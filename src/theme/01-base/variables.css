@@ -1,0 +1,10 @@
+:root {
+  --size-navbar-height: 60px;
+  --size-footer-height: 180px;
+  --color-primary: #00A760;
+  --color-primary-light: #BDD4C3;
+  --color-primary-dark: #2D7F63;
+  --color-secondary: #9D9C9C;
+  --color-secondary-dark: #3C3C3B;
+  --color-secondary-light: #D0D0CF;
+}

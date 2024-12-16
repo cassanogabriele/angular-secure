@@ -1,0 +1,334 @@
+html,
+body {
+  @apply h-full;
+}
+
+body {
+  @apply bg-slate-100;
+  @apply text-slate-900;
+}
+
+body.dark {
+  @apply bg-zinc-900;
+  @apply text-zinc-200;
+}
+
+/* Nav link when dark mode */
+body.dark .nav-link {
+  @apply text-zinc-200;
+}
+
+body.dark .nav-link:hover {
+  @apply bg-inherit;
+}
+
+/* Hamburger button dark mode */
+body.dark .line {
+  stroke: #FFFFFF !important;
+}
+
+
+/*margin-top nav bar*/
+.mt-nav{
+  margin-top: calc(var(--size-navbar-height) + 20px);
+}
+
+body.dark tbody tr:nth-child(odd){
+  @apply bg-neutral-900;
+}
+tbody tr:nth-child(odd){
+  @apply bg-neutral-100;
+}
+
+.input-icon {
+  background-color: var(--color-secondary-light);
+  @apply text-black;
+  font-size: 1.5rem;
+  padding: 5px;
+  top: 24px;
+  right: 0px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+}
+
+
+/* material checkbox */
+.mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background, .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background, .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control[data-indeterminate=true]:enabled~.mdc-checkbox__background {
+  border-color: var(--color-primary) !important;
+    background-color: var(--color-primary) !important;
+}
+
+.mat-mdc-checkbox.mat-accent {
+  --mdc-checkbox-selected-checkmark-color: #fff;
+  --mdc-checkbox-selected-focus-icon-color: var(--color-primary-light);
+  --mdc-checkbox-selected-hover-icon-color: var(--color-secondary-light);
+  --mdc-checkbox-selected-icon-color: var(--color-primary);
+  --mdc-checkbox-selected-pressed-icon-color: var(--color-primary);
+  --mdc-checkbox-unselected-focus-icon-color: #212121;
+  --mdc-checkbox-unselected-hover-icon-color: #212121;
+  --mdc-checkbox-disabled-selected-icon-color: rgba(0, 0, 0, 0.38);
+  --mdc-checkbox-disabled-unselected-icon-color: rgba(0, 0, 0, 0.38);
+  --mdc-checkbox-unselected-icon-color: rgba(0, 0, 0, 0.54);
+  --mdc-checkbox-unselected-pressed-icon-color: rgba(0, 0, 0, 0.54);
+}
+
+.mat-mdc-checkbox.mat-accent .mdc-checkbox--selected~.mdc-checkbox__ripple {
+  background: var(--color-primary);
+}
+
+.mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate=true])~.mdc-checkbox__background{
+  background-color: #fff !important;
+}
+
+
+
+/* ngx pagination*/
+.pagination {
+  @apply flex;
+  @apply justify-end;
+  @apply items-center;
+  @apply mr-4;
+  @apply mt-4;
+}
+
+.pagination .ngx-pagination {
+  @apply text-sm;
+  line-height: initial !important;
+  padding: 0 !important;
+  height: 38px;
+}
+.pagination .disabled{
+  padding: 0 !important;
+}
+.pagination .disabled:hover{
+  background-color: white !important;
+}
+.pagination .current{
+  padding: 0 !important;
+}
+
+.pagination .pagination-previous{
+  font-weight: 600;
+  color: black !important;
+}
+.pagination .pagination-next{
+  font-weight: 600;
+  color: black !important;
+}
+.pagination .ngx-pagination li{
+}
+
+.pagination ul{
+  @apply border;
+  @apply border-gray-300;
+  @apply rounded-md;
+  height: 100%;
+}
+
+.pagination li{
+  @apply bg-white;
+  @apply h-full;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.pagination li a:hover{
+  background-color: white !important;
+}
+
+.pagination li:nth-child(1){
+  @apply border-r;
+  @apply rounded-l-md;
+  @apply border-gray-300;
+}
+
+.pagination li a{
+  height: 100%;
+  padding: 0 !important;
+}
+
+.pagination .current{
+  background: rgb(187 247 208 / var(--tw-bg-opacity)) !important;
+  color: black !important;
+}
+
+.pagination .pagination-next{
+  @apply rounded-r-md;
+}
+.pagination .pagination-next :hover{
+  @apply rounded-r-md;
+}
+
+/* ngx pagination dark*/
+.pagination {
+  @apply flex;
+  @apply justify-end;
+  @apply items-center;
+  @apply mr-4;
+  @apply mt-4;
+}
+
+
+.pagination.dark .disabled:hover{
+  @apply !bg-neutral-800;
+}
+.pagination .current{
+  padding: 0 !important;
+}
+
+.pagination.dark .pagination-previous{
+  color: white !important;
+}
+.pagination .pagination-next{
+  color: white !important;
+}
+.pagination li{
+  color: white !important;
+}
+
+.pagination.dark ul{
+  @apply border-gray-800;
+}
+
+.pagination.dark li{
+  @apply bg-neutral-900;
+}
+
+.pagination.dark li a{
+  color:white !important;
+}
+
+.pagination.dark li a:hover{
+  @apply !bg-neutral-800;
+}
+
+
+.pagination.dark li:nth-child(1){
+  @apply !border-gray-800;
+}
+
+
+/*loading dots*/
+/* loading dots */
+
+.loading:after {
+  content: ' .';
+  animation: dots 1s steps(5, end) infinite;}
+
+@keyframes dots {
+  0%, 20% {
+    color: rgba(0,0,0,0);
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  40% {
+    color: black;
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  60% {
+    text-shadow:
+      .25em 0 0 black,
+      .5em 0 0 rgba(0,0,0,0);}
+  80%, 100% {
+    text-shadow:
+      .25em 0 0 black,
+      .5em 0 0 black;}}
+
+
+/*slider*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--color-primary);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--color-primary);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 17px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+/*mat menu*/
+.mat-mdc-menu-panel.dark{
+  @apply bg-zinc-700;
+  color: white !important;
+}
+
+.dropdown-content {
+  z-index: 9999 !important;
+}
+
+
+/* MODAL */
+
+.ngneat-dialog {
+}
+.ngneat-dialog-backdrop {
+}
+.ngneat-dialog-content  {
+}
+.ngneat-drag-marker {
+}
+.ngneat-close-dialog {
+}
+
+/* MODAL DARK */
+
+ngneat-dialog.dark .ngneat-dialog-content{
+  @apply bg-zinc-700;
+  color: white !important;
+}
+
+

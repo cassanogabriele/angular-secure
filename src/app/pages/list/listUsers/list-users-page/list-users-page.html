@@ -1,0 +1,71 @@
+<div *ngIf="dataLoaded && uniqueUsers && uniqueUsers.length > 0">
+    <table class="table table-striped">
+      <thead>
+        <tr class="text-center">
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Rôle</th>
+          <th>Actif</th>
+          <th>Date de création</th>
+          <th [hasRoles]="'admin'">Modifier</th>
+          <th [hasRoles]="'admin'">Supprimer</th>
+          <th [hasRoles]="'admin'">Activer</th>
+          <th [hasRoles]="'admin'">Modifier rôles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of uniqueUsers">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>   
+          <td>{{ user.email }}</td>
+          <td>{{ user.roles }}</td>
+
+          <td *ngIf="user.active == 1">
+            <i class="fas fa-check-circle text-success"></i>
+          </td>
+
+          <td *ngIf="user.active != 1">
+            <i class="fas fa-times-circle text-danger"></i>
+          </td>    
+
+          <td>{{ user.created_at }}</td>  
+
+          <td [hasRoles]="'admin'">
+            <button type="button" class="btn bg-success text-white btn-sm" (click)="editUser(user.id)">
+                <i class="fas fa-edit"></i>
+            </button>
+          </td>
+
+          <td>
+            <button type="button" class="btn bg-danger text-white btn-sm ml-2" (click)="deleteUser(user.id)">
+              <i class="fas fa-trash-alt"></i> 
+            </button>
+          </td>
+
+          <td>
+            <button *ngIf="user.active == 1" type="button" (click)="deactiveUser(user.id)" class="btn bg-light text-white btn-sm ml-2 border-success">
+              <i class="fas fa-check-circle text-success"></i>
+            </button>
+
+            <button *ngIf="user.active != 1" (click)="activeUser(user.id)" type="button" class="btn bg-light text-white btn-sm ml-2 border-danger">              
+              <i class="fas fa-times-circle text-danger"></i>
+            </button>
+          </td>
+
+          <td>   
+            <button (click)="editRoles(user.id)" type="button" class="btn bg-primary text-white btn-sm ml-2">              
+              <i class="fas fa-edit"></i> <span class="ml-1"></span>
+            </button>
+          </td> 
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<div *ngIf="dataLoaded && uniqueUsers && uniqueUsers.length === 0">
+  <div class="alert alert-danger text-center mt-5" role="alert">
+    Il n'y a pas d'utilisateurs.
+  </div>
+</div>
+  

@@ -1,0 +1,116 @@
+<header id="header" class="z-20 w-full py-2 border-b bg-white/20 dark:bg-zinc-900/40 backdrop-blur border-base">
+  <div class="container items-center justify-between mx-auto sm:flex center">
+    <div class="flex justify-start h-full">
+      <app-logo class="hidden sm:block"></app-logo>
+
+      <div id="nav-link-wrapper" class="hidden sm:block sm:ml-2">
+        <div class="flex space-x-4">
+          <!-- Onglet "Utilisateurs"-->
+          <button mat-button [matMenuTriggerFor]="usersMenu" type="button"
+            class="inline-flex items-center text-sm leading-6 text-gray-900 gap-x-1" aria-expanded="false">
+            <span>Utilisateurs</span>
+            <svg class="absolute w-5 h-5 top-2 -right-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                clip-rule="evenodd" />
+            </svg>
+          </button>
+
+          <!-- Liens de l'onglet "Utilisateurs"-->
+          <mat-menu #usersMenu="matMenu" yPosition="below"
+            class="flex-auto mt-4 overflow-hidden text-sm leading-6 bg-white shadow-lg rounded-3xl ring-1 ring-gray-900/5">
+            <div class="flex flex-col">
+              <a [routerLink]="['/list/listUsers']" class="p-4 font-medium text-gray-900 hover:text-primary_dark">
+                Lister
+              </a>
+              <a [routerLink]="['/list/addUser']" [hasRoles]="'admin'"
+                class="p-4 font-medium text-gray-900 hover:text-primary_dark">
+                Ajouter
+              </a>       
+              <a [routerLink]="['/list/recoverUsers']" [hasRoles]="'admin'"
+                class="p-4 font-medium text-gray-900 hover:text-primary_dark">
+                Récupérer
+              </a>        
+            </div>
+          </mat-menu>
+
+          <!-- Onglet "Clients"-->
+          <button mat-button [matMenuTriggerFor]="clientsMenu" type="button" 
+            class="inline-flex items-center text-sm leading-6 text-gray-900 gap-x-1" aria-expanded="false">
+            <span>Clients</span>
+            <svg class="absolute w-5 h-5 top-2 -right-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                clip-rule="evenodd" />
+            </svg>
+          </button>
+         
+          <!-- Liens de l'onglet "Clients"-->
+          <mat-menu #clientsMenu="matMenu" yPosition="below"
+            class="flex-auto mt-4 overflow-hidden text-sm leading-6 bg-white shadow-lg rounded-3xl ring-1 ring-gray-900/5">
+            <div class="flex flex-col">
+              <a [routerLink]="['/list/listClients']" class="p-4 font-medium text-gray-900 hover:text-primary_dark">
+                Lister
+              </a>
+              <a [routerLink]="['/list/addClient']" class="p-4 font-medium text-gray-900 hover:text-primary_dark">
+                Ajouter
+              </a>
+              <a [routerLink]="['/list/recoverClient']" [hasRoles]="'admin'"
+                class="p-4 font-medium text-gray-900 hover:text-primary_dark">
+                Récupérer
+              </a>   
+            </div>
+          </mat-menu>
+          
+          <!-- Onglet "Administrateurs" (ne s'affiche uniquement si l'utilisateur à le rôle "superadmin")-->
+          <button mat-button [matMenuTriggerFor]="administratorsMenu" type="button" [hasRoles]="'superadmin'"
+            class="inline-flex items-center text-sm leading-6 text-gray-900 gap-x-1" aria-expanded="false">
+            <span>Administrateurs</span>
+            <svg class="absolute w-5 h-5 top-2 -right-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                clip-rule="evenodd" />
+            </svg>
+          </button>
+         
+          <!-- Liens de l'onglet "Administrateurs" -->
+          <mat-menu #administratorsMenu="matMenu" yPosition="below"
+            class="flex-auto mt-4 overflow-hidden text-sm leading-6 bg-white shadow-lg rounded-3xl ring-1 ring-gray-900/5">
+            <div class="flex flex-col">
+              <a [routerLink]="['/list/listAdministrators']" class="p-4 font-medium text-gray-900 hover:text-primary_dark">
+                Lister
+              </a>
+              <a [routerLink]="['/list/addAdministrator']" class="p-4 font-medium text-gray-900 hover:text-primary_dark">
+                Ajouter
+              </a>
+
+              <a [routerLink]="['/list/recoverAdministrators']" [hasRoles]="'admin'"
+                class="p-4 font-medium text-gray-900 hover:text-primary_dark">
+                Récupérer
+              </a>   
+            </div>
+          </mat-menu>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu "burger" pour le responsive en mobile -->
+    <nav class="mt-2 mr-12 sm:flex sm:items-center sm:space-x-2">
+      <app-hamburger-button class="sm:hidden" (menuStatus)="onClickHamburgerButton($event)"></app-hamburger-button>
+      <button (click)="onClickSignOut()" class="hidden btn btn-secondary sm:flex">
+        <!-- prettier-ignore -->
+        <svg class xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+          role="img" class="iconify iconify--material-symbols" width="22" height="22"
+          preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+          <path fill="currentColor"
+            d="M15.325 16.275q-.275-.325-.275-.738q0-.412.275-.687l1.85-1.85H10q-.425 0-.712-.288Q9 12.425 9 12t.288-.713Q9.575 11 10 11h7.175l-1.85-1.85q-.3-.3-.3-.712q0-.413.3-.713q.275-.3.688-.3q.412 0 .687.275l3.6 3.6q.15.15.213.325q.062.175.062.375t-.062.375q-.063.175-.213.325l-3.6 3.6q-.325.325-.712.287q-.388-.037-.663-.312ZM5 21q-.825 0-1.413-.587Q3 19.825 3 19V5q0-.825.587-1.413Q4.175 3 5 3h6q.425 0 .713.287Q12 3.575 12 4t-.287.712Q11.425 5 11 5H5v14h6q.425 0 .713.288q.287.287.287.712t-.287.712Q11.425 21 11 21Z">
+          </path>
+        </svg>
+        <span class="ml-2">Déconnexion</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<app-breadcrum *ngIf="isBreadcrumVisible" id="breadcrum"></app-breadcrum>

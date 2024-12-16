@@ -1,0 +1,47 @@
+<div *ngIf="dataLoaded && uniqueRecoveredUsers && uniqueRecoveredUsers.length > 0">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Rôle</th>
+        <th>Actif</th>
+        <th>Date de création</th>
+        <th [hasRoles]="'admin'">Réactiver</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let recoveredUser of uniqueRecoveredUsers">
+        <td>{{ recoveredUser.id }}</td>
+        <td>{{ recoveredUser.name }}</td>
+        <td>{{ recoveredUser.email }}</td>
+        <td>{{ recoveredUser.roles }}</td>
+
+        <td *ngIf="recoveredUser.active == 1">
+          <i class="fas fa-check-circle text-success"></i>
+        </td>
+
+        <td *ngIf="recoveredUser.active != 1">
+          <i class="fas fa-times-circle text-danger"></i>
+        </td>
+
+        <td>{{ recoveredUser.created_at }}</td>
+
+        <td [hasRoles]="'admin'">
+          <input type="checkbox" (change)="toggleUserSelection(recoveredUser.id)" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Ajout du bouton de validation -->
+  <button type="button" class="btn btn-primary mt-5" (click)="reactivateUser()">Réactiver</button>
+</div>
+
+<div *ngIf="dataLoaded && uniqueRecoveredUsers && uniqueRecoveredUsers.length === 0">
+  <div class="alert alert-danger text-center mt-5" role="alert">
+    Il n'y a pas d'utilisateurs supprimés.
+  </div>
+</div>
+  

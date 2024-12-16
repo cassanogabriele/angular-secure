@@ -1,0 +1,24 @@
+
+
+#logo{
+  animation-delay: .7s;
+}
+
+h1{
+  font-size: 3.5rem;
+  line-height: 2em;
+  color: black !important;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  #component{
+    width: 100vw;
+    height: 100vh;
+  }
+  #component > div {
+    width:100vw !important;
+    height: 100vh !important;
+  }
+}

@@ -1,0 +1,56 @@
+<div *ngIf="dataLoaded && administrators && administrators.length > 0">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Actif</th>
+          <th>Date de création</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let administrator of administrators">
+          <td>{{ administrator.id }}</td>
+          <td>{{ administrator.name }}</td>   
+          <td>{{ administrator.email }}</td>
+
+          <td *ngIf="administrator.active == 1">
+            <i class="fas fa-check-circle text-success"></i>
+          </td>
+
+          <td *ngIf="administrator.active != 1">
+            <i class="fas fa-times-circle text-danger"></i>
+          </td>    
+
+          <td>{{ administrator.created_at }}</td>  
+
+          <td [hasRoles]="'admin'">
+            <button type="button" class="btn bg-success text-white btn-sm" (click)="editAdministrator(administrator.id)">
+                <i class="fas fa-edit"></i>
+            </button>
+
+            <button type="button" class="btn bg-danger text-white btn-sm ml-2" (click)="deleteAdministrator(administrator.id)">
+                <i class="fas fa-trash-alt"></i> 
+            </button>
+
+            <button *ngIf="administrator.active == 1" type="button" class="btn bg-light text-white btn-sm ml-2 border-dark" (click)="deactiveAdministrator(administrator.id)">
+              <i class="fas fa-check-circle text-success"></i>              
+            </button>
+
+            <button *ngIf="administrator.active != 1" type="button" class="btn bg-light text-white btn-sm ml-2 border-dark" (click)="activeAdministrator(administrator.id)">
+              <i class="fas fa-times-circle text-danger"></i>
+            </button>
+          </td> 
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<div *ngIf="dataLoaded && administrators && administrators.length == 0">
+  <div class="alert alert-danger text-center mt-5" role="alert">
+    Il n'y a pas d'administrateurs.
+  </div>
+</div>

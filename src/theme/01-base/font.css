@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "TStar regular";
+  src: url("/assets/fonts/tstar/TSTAR-Regular.otf");
+}
+@font-face {
+  font-family: "TSar medium italic";
+  src: url("/assets/fonts/tstar/TSTAR-MediumItalic.otf");
+}
+@font-face {
+  font-family: "TStar medium";
+  src: url("/assets/fonts/tstar/TSAR-Medium.otf");
+}
+@font-face {
+  font-family: "TStar bold";
+  src: url("/assets/fonts/tstar/TSAR-Bold.otf");
+}
+@font-face {
+  font-family: "TStar heavy";
+  src: url("/assets/fonts/tstar/TSAR-Heavy.otf");
+}
+@font-face {
+  font-family: "TStar light";
+  src: url("/assets/fonts/tstar/TSAR-Light.otf");
+}
+@font-face {
+  font-family: "TStar italic";
+  src: url("/assets/fonts/tstar/TSAR-Italic.otf");
+}
+
+html {
+  @apply font-body;
+  /* font-family: "TStar regular"; */
+  @apply font-light;
+}

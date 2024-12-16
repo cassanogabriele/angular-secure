@@ -1,0 +1,14 @@
+<h1>Modifiez les rôles de l'utilisateur n°{{ userId }}</h1>
+
+<div class="container">
+  <form name="userRolesForm" id="userRoles">  
+    <div class="form-group">
+      <div *ngFor="let role of roles">
+        <input type="checkbox" [id]="role.id" [value]="role.id" name="roles" [checked]="isRoleSelected(role)"/>
+        <label [for]="role.id"><span class="ml-2">{{ role.name }}</span></label>
+      </div>
+    </div>     
+
+    <button type="submit" class="btn btn-primary mt-5" (click)="updateUserRoles(userId)">Modifier</button> 
+  </form>
+</div>

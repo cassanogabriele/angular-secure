@@ -1,0 +1,46 @@
+
+<div *ngIf="dataLoaded && recoveredAdministrators && recoveredAdministrators.length > 0">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Actif</th>
+          <th>Date de création</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let recoveredAdministrator of recoveredAdministrators">
+          <td>{{ recoveredAdministrator.id }}</td>
+          <td>{{ recoveredAdministrator.name }}</td>   
+          <td>{{ recoveredAdministrator.email }}</td>
+
+          <td *ngIf="recoveredAdministrator.active == 1">
+            <i class="fas fa-check-circle text-success"></i>
+          </td>
+
+          <td *ngIf="recoveredAdministrator.active != 1">
+            <i class="fas fa-times-circle text-danger"></i>
+          </td>    
+
+          <td>{{ recoveredAdministrator.created_at }}</td>  
+
+          <td [hasRoles]="'admin'">
+              <input type="checkbox" (change)="toggleAdministratorSelection(recoveredAdministrator.id)" />
+          </td> 
+        </tr>
+      </tbody>
+    </table>
+
+    <button type="button" class="btn btn-primary mt-5" (click)="reactivateAdministrator()">Réactiver</button>
+</div>
+
+
+<div *ngIf="dataLoaded && recoveredAdministrators && recoveredAdministrators.length == 0">
+    <div class="alert alert-danger text-center mt-5" role="alert">
+      Il n'y a pas d'administrateurs supprimés.
+    </div>
+</div>

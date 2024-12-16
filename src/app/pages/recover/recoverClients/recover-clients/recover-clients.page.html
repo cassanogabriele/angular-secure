@@ -1,0 +1,46 @@
+
+<div *ngIf="dataLoaded && recoveredClients && recoveredClients.length > 0">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actif</th>
+        <th>Date de création</th>
+        <th [hasRoles]="'admin'">Réactiver</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let recoveredClient of recoveredClients">
+        <td>{{ recoveredClient.id }}</td>
+        <td>{{ recoveredClient.name }}</td>
+        <td>{{ recoveredClient.email }}</td>
+
+        <td *ngIf="recoveredClient.active == 1">
+          <i class="fas fa-check-circle text-success"></i>
+        </td>
+
+        <td *ngIf="recoveredClient.active != 1">
+          <i class="fas fa-times-circle text-danger"></i>
+        </td>
+
+        <td>{{ recoveredClient.created_at }}</td>
+
+        <td [hasRoles]="'admin'">
+          <input type="checkbox" (change)="toggleClientSelection(recoveredClient.id)" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Ajout du bouton de validation -->
+  <button type="button" class="btn btn-primary mt-5" (click)="reactivateClient()">Réactiver</button>
+</div>
+
+<div *ngIf="dataLoaded && recoveredClients && recoveredClients.length === 0">
+  <div class="alert alert-danger text-center mt-5" role="alert">
+    Il n'y a pas de clients supprimés.
+  </div>
+</div>
+  

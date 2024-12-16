@@ -1,0 +1,43 @@
+header{
+  min-height: var(--size-navbar-height);
+  position: relative;
+}
+
+.nav-link-wrapper{
+
+  animation: 'bounce'; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
+}
+
+.logout{
+    align-items: center;
+    justify-content: center;
+    background-color: #ff121287;
+    width: calc(100vw - 45px);
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+::ng-deep.mat-menu-panel {
+  max-width: none !important;
+}
