@@ -1,5 +1,9 @@
 ## Application exemple : Front End Angular pour l'API CodeIgniter
 
+# Démarrage de l'application 
+
+ng serve --open
+
 # Installation d'Angular CLI 
 
 npm install -g @angular/cli
